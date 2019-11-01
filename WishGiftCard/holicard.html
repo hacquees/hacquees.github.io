@@ -96,9 +96,9 @@ form {
 </body>
 <script type="text/javascript">
 	var params = new URLSearchParams(window.location.search);
-	whatsapptext="Follow the link to see the wish from "+name+"\n"+window.location;
-	document.getElementById("whatsapp").href="whatsapp://send?text="+whatsapptext;
 	var name = params.get("name").trim();
+	whatsapptext="Follow the link to see the wish from "+name+". "+window.location;
+	document.getElementById("whatsapp").href="whatsapp://send?text="+whatsapptext;
 	document.getElementById("name").textContent = name;
 </script>
 
