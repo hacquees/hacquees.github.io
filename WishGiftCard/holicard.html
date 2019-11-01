@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title id="title"></title>
+	<title id="title">Happy Holi</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <style type="text/css">
@@ -14,7 +14,7 @@ html {
 body {
 	margin: 0;
 	height: 100%;
-	background-image: url("images/holi_background.jpg"); /* The image used */
+	background-image: url("images/background.jpg"); /* The image used */
 	background-position: center; /* Center the image */
 	background-size: cover; 
 }
@@ -53,7 +53,7 @@ form {
 		<div class="wish">
 			<center>
 			<span id="name" class="blinking"></span> is wishing you a <br>
-			very verry <span id="festival"></span><br>
+			very verry <span id="festival">Happy Holi</span><br>
 			</center>
 		</div>
 	</div>
@@ -61,7 +61,6 @@ form {
 		<center>
 		<form action="#" method="GET">
 			<input type="text" name="name" placeholder="Enter your name">
-			<input type="hidden" id="f_festival" name="festival">
 			<input type="submit" value="Create Gift">
 		</form>
 		</center>
@@ -70,12 +69,7 @@ form {
 <script type="text/javascript">
 	var params = new URLSearchParams(window.location.search);
 	var name = params.get("name").trim();
-	var festival = params.get("festival").trim();
-	document.getElementById("f_festival").value = festival;
-	
-	document.getElementById("title").textContent = festival;
 	document.getElementById("name").textContent = name;
-	document.getElementById("festival").textContent = festival;
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151370914-1"></script>
