@@ -14,8 +14,8 @@ html {
 body {
 	margin: 0;
 	height: 100%;
-	background-image: url("images/background.jpg"); /* The image used */
-	background-position: center; /* Center the image */
+	background-image: url("images/holi_background.jpg");
+	background-position: center;
 	background-size: cover; 
 }
 .wish {
@@ -23,10 +23,13 @@ body {
 	font-size: 2em;
 }
 #name {
-	font-size: 2.5em;
+	font-size: 1.5em;
 }
 #festival {
-	font-size: 3em;
+	font-size: 2em;
+	animation-direction: alternate;
+    animation:colors 15s infinite;
+    font-style: italic;
 }
 .formcontainer {
 	background-color: rgba(0,0,255,0.5);
@@ -44,6 +47,20 @@ body {
     90%{    color: transparent;  }
     100%{   color: #000;    }
 }
+@keyframes leftright {
+  0% { transform: translate(0, 0);}
+  25% { transform: translate(-10px, 0);}
+  75% { transform: translate(+10px, 0);}
+  100% { transform: translate(0, 0);}
+}
+@keyframes colors {
+    0%{     color: red;    }
+    20%{     color: orange;    }
+    40%{    color: yellow;  }
+    60%{   color: green;    }
+    80%{   color: blue;    }
+    100%{   color: purple;    }
+}
 form {
 	margin: 0.5em;
 }
@@ -53,12 +70,22 @@ form {
 		<div class="wish">
 			<center>
 			<span id="name" class="blinking"></span> is wishing you a <br>
-			very verry <span id="festival">Happy Holi</span><br>
+			very very <span id="festival">Happy Holi</span><br>
 			</center>
 		</div>
 	</div>
+	<center style="animation:leftright 1.8s infinite;">
+	<img src="images/holiwish.jpeg">
+	</center>
 	<div class="formcontainer">
 		<center>
+		<b>
+	    	<div id="countdown" style="margin: 10px;"></div>
+	    <div>
+	    <a id="whatsapp" href=""
+	    data-action="share/whatsapp/share" style="font-size: 1.5em;"> Share via <img src="images/whatsapp.png" width="30px;">
+	    </div>
+	    </b>
 		<form action="#" method="GET">
 			<input type="text" name="name" placeholder="Enter your name">
 			<input type="submit" value="Create Gift">
@@ -68,9 +95,45 @@ form {
 </body>
 <script type="text/javascript">
 	var params = new URLSearchParams(window.location.search);
+	whatsapptext="Follow the link to see the wish from "+name+"\n"+window.location;
+	document.getElementById("whatsapp").href="whatsapp://send?text="+whatsapptext;
 	var name = params.get("name").trim();
 	document.getElementById("name").textContent = name;
 </script>
+
+
+<script>
+// https://www.w3schools.com/howto/howto_js_countdown.asp
+// Set the date we're counting down to
+var countDownDate = new Date("March 9, 2020 00:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("countdown").textContent = days + "days " + hours + "hours "
+  + minutes + "mins " + seconds + "secs to go...";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").textContent = "Have fun!!!";
+  }
+}, 1000);
+</script>
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151370914-1"></script>
 <script>
