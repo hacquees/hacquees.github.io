@@ -106,7 +106,7 @@ form {
 <script type="text/javascript">
 	var params = new URLSearchParams(window.location.search);
 	var name = atob(params.get("ec")).trim();
-	whatsapptext="Follow the link to see the wish from "+name+". "+window.location;
+	whatsapptext=""+name+" has send you a special gift =D . Follow "+window.location + " to view it";
 	document.getElementById("whatsapp").href="whatsapp://send?text="+whatsapptext;
 	document.getElementById("name").textContent = name;
 
